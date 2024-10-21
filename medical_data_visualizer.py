@@ -49,12 +49,13 @@ def draw_heat_map():
     corr = df_heat.corr()
 
     # 13
-    mask = None
+    mask = np.triu(np.ones_like(corr, dtype=bool))
 
 
 
     # 14
-    fig, ax = None
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax = sns.heatmap(corr, mask=mask, annot=True)
 
     # 15
 
