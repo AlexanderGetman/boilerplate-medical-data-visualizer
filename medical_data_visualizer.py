@@ -7,7 +7,7 @@ import numpy as np
 df = pd.read_csv("medical_examination.csv")
 
 # 2
-df['overweight'] = ((df['weight']) / ((df['height'] / 100)* 2)).apply(lambda x: 1 if x >= 25 else 0)
+df['overweight'] = ((df['weight']) / ((df['height'] / 100) ** 2)).apply(lambda x: 1 if x >= 25 else 0)
 
 # 3
 df[df[['cholesterol', 'gluc']] == 1] = 0
@@ -51,10 +51,8 @@ def draw_heat_map():
     # 13
     mask = np.triu(np.ones_like(corr, dtype=bool))
 
-
-
     # 14
-    fig, ax = plt.subplots(figsize=(10, 5))    
+    fig, ax = plt.subplots(figsize=(10, 5))
 
     # 15
     sns.heatmap(corr, mask=mask, square=True, annot=True, fmt=".01f")
@@ -62,4 +60,3 @@ def draw_heat_map():
     # 16
     fig.savefig('heatmap.png')
     return fig
-
